@@ -1,0 +1,11 @@
+nav .active {
+    color: orange;
+}
+
+nav {
+    text-align: center;
+}
+
+nav ul {
+   list-style: none;
+}
