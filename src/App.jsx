@@ -5,6 +5,7 @@ import AboutPage from "./pages/AboutPage"
 import PostsPage from "./pages/post/PostsPage"
 import ShowPage from "./pages/post/ShowPage"
 import CreatePage from "./pages/post/CreatePage"
+import NotFoundPage from "./pages/NotFoundPage"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="create" element={<CreatePage />}/>
             <Route path=":id" element={<ShowPage />}/>
           </Route>
+          <Route path="*" element={<NotFoundPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>

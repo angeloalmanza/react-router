@@ -14,14 +14,18 @@ const ShowPage = () => {
     useEffect(() => {
         axios.get(`${apiUrl}/posts/${id}`).then((resp) => {
             setPost(resp.data);
-        })
+        }).catch((err) => {
+            if (err.status === 404) {
+              navigate("/not-found");
+            }
+          })
     }, [id])
 
     return (
         <>
             {post && (
                 <div>
-                    <button className="btn btn-primary" onClick={() => navigate(-1)}>
+                    <button className="btn btn-primary" onClick={() => navigate("/posts")}>
                         Torna indietro
                     </button>
                     <h1>{post.title}</h1>
