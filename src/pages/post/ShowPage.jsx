@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const ShowPage = () => {
@@ -20,9 +20,9 @@ const ShowPage = () => {
             {post && (
                 <div>
                     <h1>{post.title}</h1>
-                    <img src={`${apiUrl}/${imagePath}`} alt="" className="w-50 mb-2"/>
+                    <img src={`${apiUrl}/${imagePath}`} alt="" className="w-50 mb-2" />
                     <div>
-                    <h4>Tags:</h4>
+                        <h4>Tags:</h4>
                         {post.tags && post.tags.length > 0 && (
                             <ul>
                                 {post.tags.map((tag, index) => (
@@ -30,6 +30,14 @@ const ShowPage = () => {
                                 ))}
                             </ul>
                         )}
+                    </div>
+                    <div className="mb-3">
+                        <Link className="btn btn-primary" to={`/posts/${post.id - 1}`}>
+                            Precedente
+                        </Link>
+                        <Link className="btn btn-primary" to={`/posts/${post.id + 1}`}>
+                            Successiva
+                        </Link>
                     </div>
                 </div>
             )}
