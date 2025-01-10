@@ -9,8 +9,6 @@ const AppLayout = () => {
         </header>
 
         <Outlet />
-
-        <footer>Footer</footer>
         </>
     )
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const AppCard = ({post, onCancel}) => {
@@ -10,7 +11,12 @@ const AppCard = ({post, onCancel}) => {
               <h4>{post.title}</h4>
               <p>{post.content}</p>
               <p><strong>Tags:</strong> {post.tags.join(", ")}</p>
+              <div>
               <button onClick={onCancel} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
+              <Link className="btn btn-success" to={`/posts/${post.id}`}>
+              Dettagli
+              </Link>
+              </div>
             </div>
         </div>
     )

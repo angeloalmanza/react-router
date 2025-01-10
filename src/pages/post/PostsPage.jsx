@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 const apiUrl = import.meta.env.VITE_API_URL;
-import AppCard from "./AppCard";
+import AppCard from "../../components/AppCard";
+import { Link } from "react-router-dom";
 
 const PostsPage = () => {
     const initialDataForm = {
@@ -92,11 +93,17 @@ const PostsPage = () => {
       return (
         <>
           <div className="container">
-            <section>
-              <select name="tags" id="" value={filterTags} onChange={(event) => setFilterTags(event.target.value)}>
-                <option value="all">Tutti i post</option>
-                {tags.map((curTag,index) => <option key={index} value={curTag}> {curTag}</option>)}
-              </select>
+            <section className="d-flex justify-content-between align-items-center">
+              <div>
+                <select name="tags" id="" value={filterTags} onChange={(event) => setFilterTags(event.target.value)}>
+                  <option value="all">Tutti i post</option>
+                  {tags.map((curTag,index) => <option key={index} value={curTag}> {curTag}</option>)}
+                </select>
+              </div>
+
+              <Link className="btn btn-primary" to="/posts/create">
+              Aggiungi un nuovo post
+              </Link>
             </section>
     
             <section>

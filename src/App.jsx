@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AppLayout from "./components/AppLayout"
-import HomePage from "./components/HomePage"
-import AboutPage from "./components/AboutPage"
-import PostsPage from "./components/PostsPage"
+import HomePage from "./pages/HomePage"
+import AboutPage from "./pages/AboutPage"
+import PostsPage from "./pages/post/PostsPage"
+import ShowPage from "./pages/post/ShowPage"
 
 function App() {
   return (
@@ -11,7 +12,11 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/posts" element={<PostsPage />} />
+          <Route path="/posts">
+            <Route index element={<PostsPage />}/>
+            {/* <Route path="create" element={<CreatePage />}/> */}
+            <Route path=":id" element={<ShowPage />}/>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
