@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const ShowPage = () => {
     const [post, setPost] = useState(null);
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const imagePath = post?.image.replace("img/", "");
 
@@ -19,6 +21,9 @@ const ShowPage = () => {
         <>
             {post && (
                 <div>
+                    <button className="btn btn-primary" onClick={() => navigate(-1)}>
+                        Torna indietro
+                    </button>
                     <h1>{post.title}</h1>
                     <img src={`${apiUrl}/${imagePath}`} alt="" className="w-50 mb-2" />
                     <div>
